@@ -1,0 +1,15 @@
+1) First when the Employee sign up via registration system he or she has to enter all the details like employee ID, Name, Date of Birth, Contact number ,Email ,Office number and on which floor there office is and all these details will go into Employees table.
+
+2) Whenever an employee is scanned on entering or leaving the facility all the data like Employee ID, Scan Date, Time and Temperature gets populated in the Scans Table.
+
+3) Whenever an employee is detected to have fever after scan they will be required to undergo a test or random testing by company all the data like Test ID, Employee ID, Scan ID, Test Location, Test Date, Test Time, Test Result will go in Tests Table. And for the employees who are selected randomly for testing will have their Scan ID as NULL because they didn’t display high temperature during scan.
+
+4) For the self-report I have created a table Self Report which will be populated when employees want to self report themselves and the table will consist of values like Employee ID, Report Date, Report Time and Symptom id (this field will consist values from 1 to 5 as there are five symptoms that company would like them to report for). And all the people who report themselves will be required to undergo a test and once they undergo a test all the details of the test will be put into Tests table by an employee and in this case as well Scan ID field will be NULL and Test Location can be any thing (i.e Company or any outside test centre).
+
+5) Once the Test_result field from Tests table become Positive contact tracing system begins that means we will check for each and every employee who was in contact with Positive tested employee by going to Meetings table through Employee_Meeting_Bridge and checking all the details like positive tested employee attended which meeting on which floor in which room and send notifications to all the related employees to get tested.
+
+6) And Once the Test_result field from Tests table become Positive that record in moved to Infected table which consist of fields like Infected ID, Employee ID, Test ID, Start Date and Status (this field will consist of overall status of infected employee like “Back to Work” , “Deceased” , “Left Company” etc).
+
+7) And for all the Employees who have self quarantine themselves or gotten admitted (i.e all the Employees in Infected Table) they need to report their status to the company daily and all that data goes into Health_Status table which consists of fields like Infected ID, Employee ID, Date and Status (this field will consist of everyday status of infected employee like “sick” , “hospitalised” and  “well” )
+
+8) Notifications table will consist of all the notification data send to an employee like Date, Time and Notification Type (this field will consist of values like “Mandatory” or “Optional”). “Optional” notification type is for employees who are in the same floor in which an employee has tested positive and “Mandatory” notification type is for employees who were in the same meeting room.

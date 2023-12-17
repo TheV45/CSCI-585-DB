@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>OL</title>
+        <script src="https://openlayers.org/api/OpenLayers.js"></script>
+        <style>
+            #map {
+                width: 900px;
+                height: 900px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="map"></div>
+        <script>
+            // your JS code 
+            console.log("Hola, all!");
+            alert("Hello JS World!");
+
+            var d = {
+                "coordinates": 
+                [
+                    {
+                        "a": 34.02014906126706,
+                        "b": -118.29026708987136
+                    },
+                    {
+                        "a": 34.01942877567757,
+                        "b": -118.28917994174948
+                    },
+                    {
+                        "a": 34.01968338135504,
+                        "b": -118.29014025549331
+                    },
+                    {
+                        "a": 34.022224275919946,
+                        "b": -118.28323592192008
+                    },
+                    {
+                        "a": 34.02054540855684,
+                        "b": -118.28901306962831
+                    },
+                    {
+                        "a":  34.0201877824694,
+                        "b": -118.28520630526569
+                    },
+                    
+                    {
+                        "a": 34.0218560214031,
+                        "b": -118.28290101800172
+                    },
+                    {
+                        "a": 34.02015736987411,
+                        "b": -118.28369076097484
+                    },
+                    {
+                        "a": 34.01960300133563, 
+                        "b": -118.28877779562809
+                    },
+                    {
+                        "a": 34.021346435532514,
+                        "b": -118.28254282201534
+                    },
+                    {
+                        "a": 34.022239206993085,
+                        "b": -118.29184754657533
+                    },
+                    {
+                        "a": 34.02004846137679, 
+                        "b": -118.28999265704404
+                    },
+                    
+                    {
+                        "a": 34.032994828061305,
+                        "b": -118.29057506261238
+                    }
+                ]
+            };
+            localStorage.setItem("myData", JSON.stringify(d));
+
+            // you'd need to modify the above, to store all your points
+            //next [presumably after closing the browser, and reloading our html]
+            // we can fetch the stored data, just by supplying its key:
+
+            var dataStored = JSON.parse(localStorage.getItem("myData"));
+            // verify that we fetched our data correctly
+            console.log(dataStored);
+            // we can iterate through our array [of points], like so:
+            var a = dataStored.coordinates; // a will contain our array
+            for(var indx in a) { // indx is 0,1,2...
+                console.log(a[indx]); // this could be a single point
+            }
+            // here's how to plot points on a map, using OpenLayers:
+            // [this is code I mildly modified, from an existing source]
+            function initMap() {
+                map = new OpenLayers.Map('map');
+                basemap = new OpenLayers.Layer.OSM("Simple OSM Map");
+                map.addLayer(basemap);
+                markers = new OpenLayers.Layer.Markers("Markers");
+                map.addLayer(markers);
+            } // initMap()
+            function addMarker(latitude, longitude) {
+                var lonLat = new OpenLayers.LonLat(longitude, latitude).transform(new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+                    map.getProjectionObject() // to Spherical Mercator Projection
+                );
+                var point = new OpenLayers.Marker(lonLat);
+                markers.addMarker(point);
+                map.setCenter(lonLat, 15); // second arg is zoom level
+                //console.log(latitude + ", " + longitude);
+            } // addMarker()
+            // load and setup map layers
+            initMap();
+
+            for (var indx in a) { // indx is 0,1,2...
+                addMarker(a[indx].a, a[indx].b); // this could be a single point
+            }
+            
+        </script>
+    </body>
+</html>

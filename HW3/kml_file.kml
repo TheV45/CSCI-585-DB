@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.0">
+<Document>
+<Style id="z1">
+<IconStyle><Icon><href>http://www.google.com/intl/en_us/mapfiles/ms/micons/blue-dot.png</href></Icon></IconStyle>
+</Style>
+
+<Folder>
+  <name>Department Buildings</name>
+  <Placemark><name>ISE Dept</name>
+  <styleUrl>#z1</styleUrl><Point><coordinates>-118.29026708987136,34.02014906126706</coordinates></Point>
+  </Placemark>
+  <Placemark><name>CS Dept</name>
+  <styleUrl>#z1</styleUrl><Point><coordinates>-118.28917994174948,34.01942877567757</coordinates></Point>
+  </Placemark>
+  <Placemark><name>EE Dept</name>
+  <styleUrl>#z1</styleUrl><Point><coordinates>-118.29014025549331,34.01968338135504</coordinates></Point>
+  </Placemark>
+</Folder>
+
+<Folder>
+  <name>Waterworks</name>
+  <Placemark><name>GF</name><description>Generations Fountain</description>
+  <styleUrl>#z1</styleUrl><Point><coordinates>-118.28323592192008,34.022224275919946</coordinates></Point>
+  </Placemark>
+  <Placemark><name>VF</name><description>Viterbi Fountain</description>
+  <styleUrl>#z1</styleUrl><Point><coordinates>-118.28901306962831,34.02054540855684</coordinates></Point>
+  </Placemark>
+  <Placemark><name>PFSF</name><description>Patsy and Forrest Shumway Fountain</description>
+	<styleUrl>#z1</styleUrl><Point><coordinates>-118.28520630526569,34.0201877824694</coordinates></Point>
+	</Placemark>
+</Folder>
+
+<Folder>
+  <name>Libraries</name>
+  <Placemark><name>Leavey</name>
+  <styleUrl>#z1</styleUrl><Point><coordinates>-118.28290101800172,34.0218560214031</coordinates></Point>
+  </Placemark>
+  <Placemark><name>Doheny</name>
+  <styleUrl>#z1</styleUrl><Point><coordinates>-118.28369076097484,34.02015736987411</coordinates></Point>
+  </Placemark>
+  <Placemark><name>SEL</name><description>Science and Engineering Library</description>
+  <styleUrl>#z1</styleUrl><Point><coordinates>-118.28877779562809,34.01960300133563</coordinates></Point>
+  </Placemark>
+</Folder>
+
+<Folder>
+  <name>Eateries</name>
+  <Placemark><name>Starbucks</name>
+  <styleUrl>#z1</styleUrl><Point><coordinates>-118.28254282201534,34.021346435532514</coordinates></Point>
+  </Placemark>
+  <Placemark><name>Taco Bell</name>
+  <styleUrl>#z1</styleUrl><Point><coordinates>-118.29184754657533,34.022239206993085</coordinates></Point>
+  </Placemark>
+  <Placemark><name>RTHCafe</name>
+  <styleUrl>#z1</styleUrl><Point><coordinates>-118.28999265704404,34.02004846137679</coordinates></Point>
+  </Placemark>
+</Folder>
+
+
+<Placemark><name>Home</name>
+  <styleUrl>#z1</styleUrl><Point><coordinates>-118.29057506261238,34.032994828061305</coordinates></Point>
+</Placemark>
+
+<Placemark>
+    <name>Convex Hull</name>
+    <Style><LineStyle><color>ffff7d53</color></LineStyle><PolyStyle><color>80fe4d28</color></PolyStyle></Style>
+    
+    <Polygon>
+        <outerBoundaryIs>
+            <LinearRing>
+                <coordinates>
+                -118.28917994174948,34.01942877567757 -118.29014025549331,34.01968338135504 -118.29184754657533,34.022239206993085 -118.29057506261238,34.032994828061305 -118.28254282201534,34.021346435532514 -118.28369076097484,34.02015736987411 -118.28917994174948,34.01942877567757
+                </coordinates>
+                
+            </LinearRing>
+        </outerBoundaryIs>
+    </Polygon> 
+</Placemark>
+
+<Placemark>
+<name>Neighbour 1-Taco Bell</name>
+    <Style><LineStyle><color>ff0000ff</color><width>2</width></LineStyle></Style>
+    <LineString>
+        <coordinates>-118.29057506261238,34.032994828061305 -118.29184754657533,34.022239206993085</coordinates>
+    </LineString>
+</Placemark>
+
+<Placemark>
+<name>Neighbour 2-VF</name>
+   <Style><LineStyle><color>ff0000ff</color><width>2</width></LineStyle></Style>
+    <LineString>
+        <coordinates>-118.29057506261238,34.032994828061305 -118.28901306962831,34.02054540855684</coordinates>
+    </LineString>
+</Placemark>
+
+<Placemark>
+<name>Neighbour 3-ISE Dept</name>
+    <Style><LineStyle><color>ff0000ff</color><width>2</width></LineStyle></Style>
+    <LineString>
+        <coordinates>-118.29057506261238,34.032994828061305 -118.29026708987136,34.02014906126706</coordinates>
+    </LineString>
+</Placemark>
+
+<Placemark>
+    <name>Neighbour 4-RTHCafe</name>
+    <Style><LineStyle><color>ff0000ff</color><width>2</width></LineStyle></Style>
+    <LineString>
+        <coordinates>-118.29057506261238,34.032994828061305 -118.28999265704404,34.02004846137679</coordinates>
+    </LineString>
+</Placemark>
+
+
+</Document>
+</kml>
