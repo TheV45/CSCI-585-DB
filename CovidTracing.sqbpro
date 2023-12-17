@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="/Users/vinitmotwani/Desktop/USC Courses/CSCI 585/CovidTracing.db" readonly="0" foreign_keys="" case_sensitive_like="" temp_store="" wal_autocheckpoint="" synchronous=""/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="2385"/><column_width id="4" width="0"/></tab_structure><tab_browse><current_table name="0,0:"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1">/*SELECT Symptom_id 
+FROM Symptom 
+GROUP BY Symptom_id
+HAVING COUNT(Symptom_id)=
+         (SELECT MAX(SymCount) 
+		 FROM(SELECT  Count(Symptom_id) AS SymCount 
+		               FROM Symptom 
+					   GROUP BY (Symptom_id) ))*/
+					   
+
+
+
+
+
+SELECT emp1.Employee_floor_no
+FROM Employee emp1
+WHERE emp1.Employee_id IN 
+(SELECT DISTINCT e1.Employee_id 
+FROM Employee e1 JOIN Health_Status h1
+ON e1.Employee_id=h1.Employee_id
+WHERE h1.Current_status=&quot;sick&quot; OR h1.Current_status=&quot;hospitalized&quot;)
+GROUP BY emp1.Employee_floor_no
+HAVING COUNT(emp1.Employee_id) = 
+           (SELECT MAX(Employee_count) 
+		   FROM(SELECT COUNT(emp.Employee_id) as Employee_count 
+                          FROM Employee emp 
+                          WHERE emp.Employee_id IN (SELECT DISTINCT e.Employee_id 
+                                                                                       FROM Employee e JOIN Health_Status h
+                                                                                       ON e.Employee_id=h.Employee_id
+                                                                                       WHERE h.Current_status=&quot;sick&quot; OR h.Current_status=&quot;hospitalized&quot;)
+                                                                                       GROUP BY emp.Employee_floor_no))
+
+</sql><current_tab id="0"/></tab_sql></sqlb_project>
